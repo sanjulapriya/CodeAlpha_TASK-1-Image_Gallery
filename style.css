@@ -1,0 +1,60 @@
+/* Basic reset & fonts */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#243040;background:linear-gradient(180deg,#fffaf0,#fff7f5)}
+.wrap{max-width:1200px;margin:26px auto;padding:18px}
+
+/* Header */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.brand{margin:0}
+.brand .tag{margin:4px 0 0;color:#7b7b7b;font-size:13px}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filter-btn{background:transparent;border:1px solid rgba(36,48,64,0.08);padding:8px 12px;border-radius:999px;cursor:pointer;transition:all .18s}
+.filter-btn.active{background:linear-gradient(90deg,#ffb4b4,#ffd7a6);color:#4b2a2a;transform:translateY(-3px);box-shadow:0 12px 30px rgba(250,150,150,0.10)}
+
+/* Masonry container using CSS columns */
+.masonry{
+  column-width: 260px;         /* base column width */
+  column-gap: 16px;
+  width:100%;
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Each card must be inline-block to flow inside columns */
+.card{
+  display:inline-block;
+  width:100%;
+  margin:0 0 16px;
+  border-radius:12px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+  box-shadow: 0 10px 30px rgba(40,50,70,0.06);
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+  cursor:pointer;
+}
+.card img{width:100%;height:auto;display:block;object-fit:cover;transition:transform .6s, filter .28s}
+.card:hover{transform:translateY(-8px);box-shadow:0 22px 56px rgba(40,50,70,0.12)}
+.card:hover img{transform:scale(1.04) rotate(.2deg);filter:saturate(1.03) brightness(1.02)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(16,18,28,0.7),rgba(6,8,12,0.9));z-index:300;padding:24px}
+.lightbox.show{display:flex}
+.lb-frame{max-width:1100px;max-height:88vh;display:flex;align-items:center;justify-content:center;position:relative}
+.lb-img{max-width:100%;max-height:88vh;border-radius:12px;box-shadow:0 28px 80px rgba(0,0,0,0.6);transition:opacity .18s,transform .28s}
+.lb-caption{position:absolute;left:18px;bottom:14px;background:rgba(255,255,255,0.9);padding:10px 12px;border-radius:8px;color:#2b2b2b;font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+
+/* Nav & close */
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:linear-gradient(180deg,#fff6f6,#fff7f0);border-radius:999px;padding:10px 14px;border:0;font-size:20px;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+.lb-prev{left:18px}
+.lb-next{right:18px}
+.lb-close{position:fixed;right:20px;top:18px;border-radius:8px;padding:8px 10px;border:0;background:#fff;font-size:16px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+
+/* Responsive tweaks */
+@media (max-width:1100px){ .masonry{column-width:220px} }
+@media (max-width:760px){ .masonry{column-width:180px} .lb-nav{display:none} .lb-close{right:12px;top:10px} }
+@media (max-width:420px){ .masonry{column-width:150px} }
+
+/* Utility */
+.foot{text-align:center;color:#6b6b6b;margin-top:14px;font-size:13px}
